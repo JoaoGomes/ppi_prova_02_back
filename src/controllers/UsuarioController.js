@@ -29,7 +29,7 @@ module.exports = {
                 const accessToken = jwt.sign({ 
                     username: user.username, role:
                     user.role }, 
-                    accessTokenSecret);
+                    accessTokenSecret, {expiresIn: '2m'});
                     res.json({
                         accessToken
                     });

@@ -12,9 +12,11 @@ const express = require("express");
 const routes = require("./routes");
 const db = require("./src/db");
 const app = express();
+const jwt = require('jsonwebtoken');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(routes);
 
 db.sync().then(() => {

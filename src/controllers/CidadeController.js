@@ -1,4 +1,22 @@
 const Cidade = require('../models/Cidade');
+const jwt = require('jsonwebtoken');
+
+const accessTokenSecret = 'youraccesstokensecret';
+
+
+const users = [
+    {
+        username: 'john',
+        password: 'password123admin',
+        role: 'admin'
+    }, {
+        username: 'anna',
+        password: 'password123member',
+        role: 'member'
+    }
+];
+
+
 
 module.exports = {
     async findAll(req, res) {

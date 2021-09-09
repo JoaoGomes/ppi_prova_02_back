@@ -35,9 +35,9 @@ module.exports = {
         const cidade = await Cidade.findByPk(req.params.id);
         await cidade.update(req.body);
         return res.json({ client });
-        } catch (err) {
+        } catch (err) {}/*
         return res.status(400).json({ error: err.message });
-        }
+        }*/
     },
 
     async destroy(req, res) {

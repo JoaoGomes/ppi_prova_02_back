@@ -1,5 +1,8 @@
-const Cidade = require('../models/Cidade');
 const jwt = require('jsonwebtoken');
+const express = require('express');
+const app = express();
+const cors = require('cors');
+app.use(cors());
 
 const accessTokenSecret = 'youraccesstokensecret';
 
@@ -21,17 +24,17 @@ module.exports = {
             const { username, password } = req.body;
             // Filtra o usuário(user) do array de usuários(users) por nome de usuário e senha
         
-            const user = users.find(u => { 
+            const findUser = users.find(u => { 
                 return u.username === username && u.password === password });
         
-            if (user) {
+            if (findUser) {
                 // Gera um token de acesso
                 const accessToken = jwt.sign({ 
-                    username: user.username, role:
-                    user.role }, 
+                    username: findUser.username, role: findUser.role }, 
                     accessTokenSecret, {expiresIn: '2m'});
+                    const user = { username: findUser.username};
                     res.json({
-                        accessToken
+                        accessToken, user
                     });
             } else {
                 res.send('Nome de usuário ou senha incorretos');

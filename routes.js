@@ -37,7 +37,7 @@ const authenticateJWT = (req, res, next) => {
 
 //Define uma rota
 routes.get("/cidades", cors(), cidades.findAll);
-routes.get("/cidades/:id", cors(), cidades.show);
+routes.get("/cidades/:nome", cors(), cidades.show);
 routes.post("/cidades", cors(), cidades.store);
 routes.put("/cidades/:id", cors(), cidades.update);
 routes.delete("/cidades/:id", cors(), cidades.destroy);

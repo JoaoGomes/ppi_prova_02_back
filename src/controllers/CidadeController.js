@@ -14,7 +14,8 @@ module.exports = {
 
     async show(req, res) {
         try {
-        const cidade = await Cidade.findByPk(req.params.id);
+//        const cidade = await Cidade.findByPk(req.params.nome);
+        const cidade = await Cidade.findOne({where: {nome: req.params.nome}});
         return res.json(cidade);
         } catch (err) {
         return res.status(400).json({ error: err.message });

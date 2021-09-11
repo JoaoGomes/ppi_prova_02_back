@@ -33,7 +33,7 @@ module.exports = {
 
     async update(req, res) {
         try {
-            const cidade = await Cidade.findByPk(req.params.id);
+            const cidade = await Cidade.findOne({where: {nome: req.params.nome}});
             await cidade.update(req.body);
             return res.json({ client });
         } catch (err) {}/*
@@ -43,7 +43,7 @@ module.exports = {
 
     async destroy(req, res) {
         try {
-            const cidade = await Cidade.findByPk(req.params.id);
+            const cidade = await Cidade.findOne({where: {nome: req.params.nome}});
             await cidade.destroy();
             return res.json();
         } catch (err) {

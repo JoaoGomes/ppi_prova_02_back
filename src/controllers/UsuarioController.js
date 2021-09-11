@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 app.use(cors());
+const Usuario = require('../models/Usuario');
 
 const accessTokenSecret = 'youraccesstokensecret';
 
@@ -15,6 +16,10 @@ const users = [
         username: 'anna',
         password: 'password123member',
         role: 'member'
+    }, {
+        username: 'joao',
+        password: '123',
+        role: 'admin'
     }
 ];
 
@@ -42,5 +47,15 @@ module.exports = {
         } catch (err) {
             return res.status(400).json({ error: err.message });
         }
-    }
+    },
+
+    async store(req, res) {
+        try {
+        const usuario = await Usuario.create(req.body);
+        return res.json(usuario);
+        } catch (err) {
+        return res.status(400).json({ error: err.message });
+        }
+    },
+
 }

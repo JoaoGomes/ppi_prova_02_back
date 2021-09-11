@@ -41,10 +41,12 @@ routes.get("/cidades/:nome", cors(), cidades.show);
 routes.post("/cidades", cors(), cidades.store);
 routes.put("/cidades/:id", cors(), cidades.update);
 routes.delete("/cidades/:id", cors(), cidades.destroy);
+
 //routes.post("/cidades", cors(), authenticateJWT, cidades.store);
 //routes.put("/cidades/:id", cors(), authenticateJWT, cidades.update);
 //routes.delete("/cidades/:id", cors(), authenticateJWT, cidades.destroy);
 
 routes.post("/login", cors(), usuarios.login);
+routes.post("/usuario/", cors(), usuarios.store);
 
 module.exports = routes;

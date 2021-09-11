@@ -12,7 +12,6 @@ routes.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 app.options('*', cors());
-//routes.use(cors());
 routes.all('*', cors());
 
 const accessTokenSecret = 'youraccesstokensecret';
@@ -47,6 +46,6 @@ routes.delete("/cidades/:id", cors(), cidades.destroy);
 //routes.delete("/cidades/:id", cors(), authenticateJWT, cidades.destroy);
 
 routes.post("/login", cors(), usuarios.login);
-routes.post("/usuario/", cors(), usuarios.store);
+routes.post("/usuarios", cors(), usuarios.insert);
 
 module.exports = routes;

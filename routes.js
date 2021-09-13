@@ -41,10 +41,6 @@ routes.post("/cidades", cors(), cidades.store);
 routes.put("/cidades/:nome", cors(), cidades.update);
 routes.delete("/cidades/:nome", cors(), cidades.destroy);
 
-//routes.post("/cidades", cors(), authenticateJWT, cidades.store);
-//routes.put("/cidades/:id", cors(), authenticateJWT, cidades.update);
-//routes.delete("/cidades/:id", cors(), authenticateJWT, cidades.destroy);
-
 routes.post("/login", cors(), usuarios.login);
 routes.post("/usuarios", cors(), usuarios.insert);
 

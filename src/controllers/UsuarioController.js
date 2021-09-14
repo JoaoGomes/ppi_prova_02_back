@@ -14,19 +14,22 @@ module.exports = {
             // Filtra o usuário(user) do array de usuários(users) por nome de usuário e senha
         
             const findUser = await Usuario.findOne({where: {nome: username}});
-        
-            if (findUser) {
+
+            if ((findUser.nome === username) && (findUser.senha === password)) {
                 // Gera um token de acesso
+                // Erro de login corrigido após o video ter sido gravado
+                // Senha não era verificada antes. Apenas o nome.
                 const accessToken = jwt.sign({ 
-                    username: findUser.username, role: findUser.role }, 
+                    username: findUser.nome, role: findUser.role }, 
                     accessTokenSecret, {expiresIn: '2m'});
                     const user = { username: username};
                     res.json({
                         accessToken, user
                     });
             } else {
-                console.log(findUser.username);
-                res.send('Nome de usuário ou senha incorretos 2');
+                console.log(findUser.nome);
+                //res.send('Nome de usuário ou senha incorretos');
+                return res.status(400).json({ error: err.message });
             }
 
         } catch (err) {
